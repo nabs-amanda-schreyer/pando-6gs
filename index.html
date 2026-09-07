@@ -164,20 +164,18 @@
     background: linear-gradient(180deg, var(--blue-25) 0%, var(--paper) 100%);
   }
 
-  .hero-illustration {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 1.5rem;
-    border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
-    background: var(--gold-25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6B4402;
-    font-size: 0.75rem;
-    text-align: center;
-    border: 2px dashed var(--gold);
-  }
+ .hero-illustration {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;                 /* makes it perfectly round */
+  background: var(--gold-25);         /* keeps the colour */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;                       /* removes the dotted line */
+  object-fit: contain;                /* makes the SVG fit nicely */
+}
   /* Replace .hero-illustration with the actual donut-card SVG/img when available */
 
   .hero h1 {
