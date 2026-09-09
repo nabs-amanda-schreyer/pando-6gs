@@ -1,1056 +1,1303 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pando 6Gs — Share. Co-create. Live.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    /* Brand palette — main */
-    --red: #AE0B0B;
-    --purple: #36063E;
-    --gold: #C27604;
-    --teal: #007061;
-    --blue: #284C74;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pando 6Gs — Share. Co-create. Live.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      /* Brand palette — main */
+      --red: #AE0B0B;
+      --purple: #36063E;
+      --gold: #C27604;
+      --teal: #007061;
+      --blue: #284C74;
 
-    /* 50% tints — used whenever a color sits on another main color */
-    --red-50: #D68585;
-    --purple-50: #9A829E;
-    --gold-50: #E0BA81;
-    --teal-50: #7FB7B0;
-    --blue-50: #C9D2DC;
+      /* 50% tints — used whenever a color sits on another main color */
+      --red-50: #D68585;
+      --purple-50: #9A829E;
+      --gold-50: #E0BA81;
+      --teal-50: #7FB7B0;
+      --blue-50: #C9D2DC;
 
-    /* 25% tints — surfaces / backgrounds */
-    --red-25: #EBC2C2;
-    --purple-25: #CDC1CF;
-    --gold-25: #F0DDC0;
-    --teal-25: #BFDBD7;
-    --blue-25: #F1F4F6;
+      /* 25% tints — surfaces / backgrounds */
+      --red-25: #EBC2C2;
+      --purple-25: #CDC1CF;
+      --gold-25: #F0DDC0;
+      --teal-25: #BFDBD7;
+      --blue-25: #F1F4F6;
 
-    --paper: #FAF8F5;
-    --ink: #1A1A1A;
+      --paper: #FAF8F5;
+      --ink: #1A1A1A;
 
-    --font-display: 'Baloo 2', 'Fredoka', sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+      --font-display: 'Baloo 2', 'Fredoka', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
 
-    --radius: 12px;
-  }
+      --radius: 12px;
+    }
 
-  * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    margin: 0;
-    font-family: var(--font-body);
-    color: var(--ink);
-    background: var(--paper);
-    line-height: 1.5;
-  }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
 
-  img, svg { display: block; max-width: 100%; }
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
 
-  a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
-  .visually-hidden {
-    position: absolute;
-    width: 1px; height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
 
-  a:focus-visible,
-  button:focus-visible,
-  .btn:focus-visible {
-    outline: 3px solid var(--gold);
-    outline-offset: 2px;
-  }
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
-  }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-  .eyebrow {
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: var(--font-display);
-  }
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
 
-  .section {
-    padding: 3.5rem 1.5rem;
-  }
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
 
-  .section-inner {
-    max-width: 960px;
-    margin: 0 auto;
-  }
+    .section {
+      padding: 3.5rem 1.5rem;
+    }
 
-  /* ---------- NAV ---------- */
-  .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: var(--blue);
-    color: var(--blue-25);
-    padding: 0.75rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
 
-  .site-nav .logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-  }
+    /* ---------- NAV ---------- */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--blue);
+      color: var(--blue-25);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-  .site-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.25rem;
-    margin: 0;
-    padding: 0;
-    font-size: 0.85rem;
-  }
+    .site-nav .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
 
-  .site-nav a { text-decoration: none; opacity: 0.9; }
-  .site-nav a:hover { opacity: 1; text-decoration: underline; }
+    .site-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+      font-size: 0.85rem;
+    }
 
-  @media (max-width: 640px) {
-    .site-nav ul { display: none; }
-  }
+    .site-nav a {
+      text-decoration: none;
+      opacity: 0.9;
+    }
 
-  /* ---------- BUTTONS ----------
+    .site-nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .site-nav ul {
+        display: none;
+      }
+    }
+
+    /* ---------- BUTTONS ----------
      Rule: full-saturation color only when sitting on paper/white/tint
      backgrounds. Anything sitting on a main color uses the 50% tint. */
-  .btn {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 0.7rem 1.6rem;
-    border-radius: 999px;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-gold-on-light {
-    background: var(--gold);
-    color: #FFF7EC;
-  }
-
-  .btn-gold-on-dark {
-    background: var(--gold-50);
-    color: #2B1600;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
-
-  /* ---------- HERO ---------- */
-  .hero {
-    text-align: center;
-    padding: 3.5rem 1.5rem 4rem;
-    background: linear-gradient(180deg, var(--blue-25) 0%, var(--paper) 100%);
-  }
-
- .hero-illustration {
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 1.5rem;
-  border-radius: 50%;                 /* makes it perfectly round */
-  background: var(--gold-25);         /* keeps the colour */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;                       /* removes the dotted line */
-  object-fit: contain;                /* makes the SVG fit nicely */
-}
-  /* Replace .hero-illustration with the actual donut-card SVG/img when available */
-
-  .hero h1 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    color: var(--blue);
-    margin: 0 0 0.75rem;
-    line-height: 1.15;
-  }
-
-  .hero p.lede {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 480px;
-    margin: 0 auto 1.5rem;
-  }
-
-  .wave {
-    display: block;
-    width: 100%;
-    height: 34px;
-  }
-
-  /* ---------- OVERVIEW ---------- */
-  .overview {
-    background: #fff;
-    padding: 1rem 1.5rem 3rem;
-  }
-
-  .overview-grid {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-    text-align: center;
-  }
-
-  .overview-grid .icon { font-size: 1.75rem; }
-  .overview-grid b { display: block; margin-top: 0.4rem; font-size: 0.95rem; }
-  .overview-grid span { display: block; color: #777; font-size: 0.85rem; margin-top: 0.2rem; }
-
-  /* ---------- CHOOSE YOUR PATH ---------- */
-  .paths {
-    background: var(--blue-25);
-  }
-
-  .paths-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .path-card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 1.5rem;
-  }
-
-  .path-card.org { border-top: 4px solid var(--teal); }
-  .path-card.family { border-top: 4px solid var(--red); }
-
-  .path-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
-  .path-card p { margin: 0; color: #666; font-size: 0.9rem; }
-  .path-card a { font-size: 0.85rem; font-weight: 600; }
-
-  /* ---------- FOUNDERS ---------- */
-  .founders {
-    background: #fff;
-    text-align: center;
-  }
-
-  .founder-grid {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
-  }
-
-  .founder {
-    width: 200px;
-  }
-
-  .founder .avatar {
-    width: 68px; height: 68px;
-    border-radius: 50%;
-    margin: 0 auto 0.6rem;
-    background: var(--purple-25);
-  }
-
-  .founder:nth-child(2) .avatar { background: var(--blue-50); }
-
-  .founder b { display: block; font-size: 0.95rem; }
-  .founder p { font-size: 0.8rem; color: #777; margin: 0.25rem 0 0; }
-
-  .founders .teaser {
-    font-size: 0.85rem;
-    color: #999;
-    margin-top: 1rem;
-  }
-
-  /* ---------- CHAPTERS (map) ---------- */
-  .chapters {
-    background: var(--purple);
-    color: var(--blue-25);
-  }
-
-  .chapters .eyebrow { color: var(--purple-25); text-align: center; display: block; }
-  .chapters h2 {
-    font-family: var(--font-display);
-    text-align: center;
-    font-size: 1.4rem;
-    margin: 0.25rem 0 1.5rem;
-    color: #fff;
-  }
-
-  .chapter-map {
-    display: flex;
-    gap: 0.6rem;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-  }
-
-  .chapter-tile {
-    min-width: 140px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 0.9rem;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: background 0.15s ease;
-  }
-
-  a.chapter-tile:hover,
-  a.chapter-tile:focus-visible {
-    background: rgba(255,255,255,0.18);
-  }
-
-  .chapter-tile b { display: block; margin-bottom: 0.2rem; }
-
-  .chapter-tile.quote {
-    background: var(--gold-50);
-    color: #2B1600;
-  }
-
-  /* ---------- FULL CHAPTER NARRATIVE ---------- */
-  .chapter-narrative {
-    background: var(--paper);
-  }
-
-  .chapter-list {
-    max-width: 620px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .chapter-entry .eyebrow { color: var(--gold); margin-bottom: 0.25rem; display: block; }
-  .chapter-entry p { margin: 0; font-size: 0.9rem; color: #444; }
-
-  .pull-quote {
-    background: var(--gold-25);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    font-size: 0.85rem;
-    color: #6B4402;
-  }
-
-  /* ---------- GAME'S STORY ---------- */
-  .game-story {
-    background: #fff;
-  }
-
-  .game-story .eyebrow { text-align: center; display: block; color: var(--blue); margin-bottom: 1.25rem; }
-
-  .game-story-grid {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .game-story-text { flex: 1; min-width: 260px; }
-  .game-story-text p { font-size: 0.9rem; margin: 0 0 0.5rem; }
-
-  .spec-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0.75rem 0;
-  }
-
-  .spec-tags span {
-    background: var(--blue-25);
-    padding: 0.25rem 0.7rem;
-    border-radius: 10px;
-    font-size: 0.75rem;
-    color: #333;
-  }
-
-  .process-list {
-    margin: 0.5rem 0 1rem;
-    padding-left: 1.2rem;
-    font-size: 0.85rem;
-    color: #444;
-    line-height: 1.85;
-  }
-
-  .process-list li::marker {
-    color: var(--teal);
-    font-weight: 700;
-  }
-
-  .optional-block {
-    background: var(--gold-25);
-    border-radius: 10px;
-    padding: 0.75rem 1rem;
-    margin: 0 0 0.75rem;
-  }
-
-  .optional-block .eyebrow {
-    display: block;
-    text-align: left;
-    font-size: 0.7rem;
-    color: #6B4402;
-    margin-bottom: 0.35rem;
-  }
-
-  .optional-block ul {
-    margin: 0;
-    padding-left: 1.1rem;
-    font-size: 0.85rem;
-    color: #6B4402;
-    line-height: 1.7;
-  }
-
-  .game-story-illustration {
-    width: 150px; height: 100px;
-    border-radius: 10px;
-    background: var(--gold-25);
-    border: 2px dashed var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; text-align: center; color: #6B4402;
-  }
-
-  /* ---------- YOUR STORY (split screen) ---------- */
-  .your-story {
-    background: var(--purple-25);
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
-  .your-story .eyebrow { text-align: center; display: block; color: var(--purple); margin-bottom: 0.3rem; }
-
-  .your-story h2 {
-    font-family: var(--font-display);
-    text-align: center;
-    font-size: 1.6rem;
-    color: var(--purple);
-    margin: 0.2rem 0 0.6rem;
-  }
-
-  .your-story > .section-inner > p.lede {
-    text-align: center;
-    max-width: 480px;
-    margin: 0 auto 2rem;
-    color: #5a4c5d;
-    font-size: 0.95rem;
-  }
-
-  .story-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-
-  @media (max-width: 700px) {
-    .story-split { grid-template-columns: 1fr; }
-  }
-
-  .story-panel {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 2.25rem 1.75rem;
-    box-shadow: 0 8px 24px rgba(54,6,62,0.12);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .story-panel:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(54,6,62,0.18);
-  }
-
-  .story-panel.org { border-top: 5px solid var(--teal); }
-  .story-panel.family { border-top: 5px solid var(--red); }
-
-  .story-illustration {
-    width: 96px;
-    height: 96px;
-    margin: -0.25rem auto 1rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .story-illustration svg { width: 72px; height: 72px; }
-
-  .story-panel.org .story-illustration { background: var(--teal-25); }
-  .story-panel.family .story-illustration { background: var(--red-25); }
-
-  .story-panel .eyebrow { display: block; margin-bottom: 0.5rem; }
-  .story-panel.org .eyebrow { color: var(--teal); }
-  .story-panel.family .eyebrow { color: var(--red); }
-
-  .story-panel h3 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.15rem;
-    margin: 0 0 0.6rem;
-    color: var(--ink);
-  }
-
-  .story-panel .intro-line {
-    font-size: 0.88rem;
-    color: #555;
-    margin: 0 0 1.1rem;
-  }
-
-  .story-panel ul {
-    margin: 0;
-    padding-left: 1.1rem;
-    font-size: 0.85rem;
-    color: #444;
-    line-height: 1.8;
-    text-align: left;
-  }
-
-  /* ---------- VALUE (quote strip) ---------- */
-  .value { background: #fff; }
-  .value .eyebrow { text-align: center; display: block; color: var(--blue); margin-bottom: 1.25rem; }
-
-  .quote-strip {
-    display: flex;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .quote-strip blockquote {
-    margin: 0;
-    max-width: 260px;
-    font-size: 0.85rem;
-    color: #444;
-    border-left: 3px solid var(--gold);
-    padding-left: 0.9rem;
-  }
-
-  /* ---------- GALLERY ---------- */
-  .gallery { background: var(--blue-25); padding-bottom: 4rem; }
-  .gallery .eyebrow { text-align: center; display: block; color: var(--blue); margin-bottom: 1.25rem; }
-
-  .gallery-strip {
-    display: flex;
-    gap: 0.6rem;
-    overflow-x: auto;
-  }
-
-  .gallery-strip .frame {
-    min-width: 110px; height: 90px;
-    background: #fff;
-    border: 2px dashed var(--blue-50);
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
-
-  /* ---------- FAQ ---------- */
-  .faq {
-    background: var(--blue);
-    color: var(--blue-25);
-    padding-top: 3.5rem;
-  }
-
-  .faq .eyebrow { text-align: center; display: block; color: var(--blue-50); margin-bottom: 1.25rem; }
-
-  .faq-list {
-    max-width: 560px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .faq-item {
-    background: rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 0.9rem 1rem;
-  }
-
-  .faq-item b { display: block; font-size: 0.9rem; margin-bottom: 0.25rem; }
-  .faq-item p { margin: 0; font-size: 0.8rem; opacity: 0.85; }
-
-  /* ---------- FINAL CTA ---------- */
-  .final-cta {
-    background: var(--blue);
-    color: #fff;
-    text-align: center;
-    padding: 2.5rem 1.5rem 3.5rem;
-  }
-
-  .final-cta h2 {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    margin: 0 0 0.5rem;
-  }
-
-  .final-cta .cta-copy {
-    max-width: 440px;
-    margin: 0 auto 0.4rem;
-    font-size: 0.85rem;
-    opacity: 0.85;
-  }
-
-  .final-cta .availability {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    margin: 0 0 1.25rem;
-  }
-
-  .final-cta .soft-link {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin: 0.9rem 0 0;
-  }
-
-  .final-cta .soft-link a { text-decoration: underline; }
-
-  .final-cta .privacy-note {
-    font-size: 0.7rem;
-    opacity: 0.5;
-    margin: 0.4rem 0 0;
-  }
-
-  /* ---------- FOOTER ---------- */
-  .site-footer {
-    background: #1F3A5A;
-    color: var(--blue-50);
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-  }
-
-  .site-footer a { text-decoration: underline; }
-
-  .site-footer .social { display: flex; gap: 0.75rem; }
-</style>
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 999px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-gold-on-light {
+      background: var(--gold);
+      color: #FFF7EC;
+    }
+
+    .btn-gold-on-dark {
+      background: var(--gold-50);
+      color: #2B1600;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding: 3.5rem 1.5rem 4rem;
+      background: linear-gradient(180deg, var(--blue-25) 0%, var(--paper) 100%);
+    }
+
+    .hero-illustration {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      /* makes it perfectly round */
+      background: var(--gold-25);
+      /* keeps the colour */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      /* removes the dotted line */
+      object-fit: contain;
+      /* makes the SVG fit nicely */
+    }
+
+    /* Replace .hero-illustration with the actual donut-card SVG/img when available */
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--blue);
+      margin: 0 0 0.75rem;
+      line-height: 1.15;
+    }
+
+    .hero p.lede {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .wave {
+      display: block;
+      width: 100%;
+      height: 34px;
+    }
+
+    /* ---------- OVERVIEW ---------- */
+    .overview {
+      background: #fff;
+      padding: 1rem 1.5rem 3rem;
+    }
+
+    .overview-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .overview-grid .icon {
+      font-size: 1.75rem;
+    }
+
+    .overview-grid b {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .overview-grid span {
+      display: block;
+      color: #777;
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    /* ---------- CHOOSE YOUR PATH ---------- */
+    .paths {
+      background: var(--blue-25);
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .path-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .path-card.org {
+      border-top: 4px solid var(--teal);
+    }
+
+    .path-card.family {
+      border-top: 4px solid var(--red);
+    }
+
+    .path-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .path-card p {
+      margin: 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .path-card a {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ---------- FOUNDERS ---------- */
+    .founders {
+      background: #fff;
+      text-align: center;
+    }
+
+    .founder-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .founder {
+      width: 200px;
+    }
+
+    .founder .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      margin: 0 auto 0.6rem;
+      background: var(--purple-25);
+    }
+
+    .founder:nth-child(2) .avatar {
+      background: var(--blue-50);
+    }
+
+    .founder b {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .founder p {
+      font-size: 0.8rem;
+      color: #777;
+      margin: 0.25rem 0 0;
+    }
+
+    .founders .teaser {
+      font-size: 0.85rem;
+      color: #999;
+      margin-top: 1rem;
+    }
+
+    /* ---------- CHAPTERS (map) ---------- */
+    .chapters {
+      background: var(--purple);
+      color: var(--blue-25);
+    }
+
+    .chapters .eyebrow {
+      color: var(--purple-25);
+      text-align: center;
+      display: block;
+    }
+
+    .chapters h2 {
+      font-family: var(--font-display);
+      text-align: center;
+      font-size: 1.4rem;
+      margin: 0.25rem 0 1.5rem;
+      color: #fff;
+    }
+
+    .chapter-map {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .chapter-tile {
+      min-width: 140px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.9rem;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.15s ease;
+    }
+
+    a.chapter-tile:hover,
+    a.chapter-tile:focus-visible {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .chapter-tile b {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .chapter-tile.quote {
+      background: var(--gold-50);
+      color: #2B1600;
+    }
+
+    /* ---------- FULL CHAPTER NARRATIVE ---------- */
+    .chapter-narrative {
+      background: var(--paper);
+    }
+
+    .chapter-list {
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .chapter-entry .eyebrow {
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .chapter-entry p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .pull-quote {
+      background: var(--gold-25);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      color: #6B4402;
+    }
+
+    /* ---------- GAME'S STORY ---------- */
+    .game-story {
+      background: #fff;
+    }
+
+    .game-story .eyebrow {
+      text-align: center;
+      display: block;
+      color: var(--blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .game-story-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .game-story-text {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .game-story-text p {
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .spec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0;
+    }
+
+    .spec-tags span {
+      background: var(--blue-25);
+      padding: 0.25rem 0.7rem;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      color: #333;
+    }
+
+    .process-list {
+      margin: 0.5rem 0 1rem;
+      padding-left: 1.2rem;
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.85;
+    }
+
+    .process-list li::marker {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .optional-block {
+      background: var(--gold-25);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .optional-block .eyebrow {
+      display: block;
+      text-align: left;
+      font-size: 0.7rem;
+      color: #6B4402;
+      margin-bottom: 0.35rem;
+    }
+
+    .optional-block ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.85rem;
+      color: #6B4402;
+      line-height: 1.7;
+    }
+
+    .game-story-illustration {
+      width: 150px;
+      height: 100px;
+      border-radius: 10px;
+      background: var(--gold-25);
+      border: 2px dashed var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      text-align: center;
+      color: #6B4402;
+    }
+
+    /* ---------- YOUR STORY (split screen) ---------- */
+    .your-story {
+      background: var(--purple-25);
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .your-story .eyebrow {
+      text-align: center;
+      display: block;
+      color: var(--purple);
+      margin-bottom: 0.3rem;
+    }
+
+    .your-story h2 {
+      font-family: var(--font-display);
+      text-align: center;
+      font-size: 1.6rem;
+      color: var(--purple);
+      margin: 0.2rem 0 0.6rem;
+    }
+
+    .your-story>.section-inner>p.lede {
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      color: #5a4c5d;
+      font-size: 0.95rem;
+    }
+
+    .story-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .story-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .story-panel {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2.25rem 1.75rem;
+      box-shadow: 0 8px 24px rgba(54, 6, 62, 0.12);
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .story-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(54, 6, 62, 0.18);
+    }
+
+    .story-panel.org {
+      border-top: 5px solid var(--teal);
+    }
+
+    .story-panel.family {
+      border-top: 5px solid var(--red);
+    }
+
+    .story-illustration {
+      width: 96px;
+      height: 96px;
+      margin: -0.25rem auto 1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .story-illustration svg {
+      width: 72px;
+      height: 72px;
+    }
+
+    .story-panel.org .story-illustration {
+      background: var(--teal-25);
+    }
+
+    .story-panel.family .story-illustration {
+      background: var(--red-25);
+    }
+
+    .story-panel .eyebrow {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .story-panel.org .eyebrow {
+      color: var(--teal);
+    }
+
+    .story-panel.family .eyebrow {
+      color: var(--red);
+    }
+
+    .story-panel h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin: 0 0 0.6rem;
+      color: var(--ink);
+    }
+
+    .story-panel .intro-line {
+      font-size: 0.88rem;
+      color: #555;
+      margin: 0 0 1.1rem;
+    }
+
+    .story-panel ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    /* ---------- VALUE (quote strip) ---------- */
+    .value {
+      background: #fff;
+    }
+
+    .value .eyebrow {
+      text-align: center;
+      display: block;
+      color: var(--blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .quote-strip {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .quote-strip blockquote {
+      margin: 0;
+      max-width: 260px;
+      font-size: 0.85rem;
+      color: #444;
+      border-left: 3px solid var(--gold);
+      padding-left: 0.9rem;
+    }
+
+    /* ---------- GALLERY ---------- */
+    .gallery {
+      background: var(--blue-25);
+      padding-bottom: 4rem;
+    }
+
+    .gallery .eyebrow {
+      text-align: center;
+      display: block;
+      color: var(--blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .gallery-strip {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+    }
+
+    .gallery-strip .frame {
+      min-width: 110px;
+      height: 90px;
+      background: #fff;
+      border: 2px dashed var(--blue-50);
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq {
+      background: var(--blue);
+      color: var(--blue-25);
+      padding-top: 3.5rem;
+    }
+
+    .faq .eyebrow {
+      text-align: center;
+      display: block;
+      color: var(--blue-50);
+      margin-bottom: 1.25rem;
+    }
+
+    .faq-list {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+    }
+
+    .faq-item b {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    /* ---------- FINAL CTA ---------- */
+    .final-cta {
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1.5rem 3.5rem;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .final-cta .cta-copy {
+      max-width: 440px;
+      margin: 0 auto 0.4rem;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    .final-cta .availability {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      margin: 0 0 1.25rem;
+    }
+
+    .final-cta .soft-link {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin: 0.9rem 0 0;
+    }
+
+    .final-cta .soft-link a {
+      text-decoration: underline;
+    }
+
+    .final-cta .privacy-note {
+      font-size: 0.7rem;
+      opacity: 0.5;
+      margin: 0.4rem 0 0;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .site-footer {
+      background: #1F3A5A;
+      color: var(--blue-50);
+      padding: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .site-footer a {
+      text-decoration: underline;
+    }
+
+    .site-footer .social {
+      display: flex;
+      gap: 0.75rem;
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="site-nav" aria-label="Primary">
-  <a href="#hero" class="logo">THE GAME</a>
-  <ul>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#the-game">The Game</a></li>
-    <li><a href="#your-story">Your Story</a></li>
-    <li><a href="#value">Value</a></li>
-  </ul>
-  <a href="#host" class="btn btn-gold-on-dark">Host a Game</a>
-</nav>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="#hero" class="logo">THE GAME</a>
+    <ul>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#the-game">The Game</a></li>
+      <li><a href="#your-story">Your Story</a></li>
+      <li><a href="#value">Value</a></li>
+    </ul>
+    <a href="#host" class="btn btn-gold-on-dark">Host a Game</a>
+  </nav>
 
-<header class="hero" id="hero">
-<img 
-  src="images/pando-icon-large.svg" 
-  alt="Pando icon" 
-  class="hero-illustration"
-  width="130" 
-  height="130"
->
-  <h1> Every person has a story </h1>
-<h2>Pando 6Gs uncovers the power it holds.</h2>
-  <p class="lede">A light-hearted, interactive storytelling game that ignites new connections with yourself and others. 
-</p>
-  <a href="#host" class="btn btn-gold-on-light">Host a Game →</a>
-</header>
+  <header class="hero" id="hero">
+    <img src="images/pando-icon-large.svg" alt="Pando icon" class="hero-illustration" width="130" height="130">
+    <h1> Every person has a story </h1>
+    <h2>Pando 6Gs uncovers the power it holds.</h2>
+    <p class="lede">A light-hearted, interactive storytelling game that ignites new connections with yourself and
+      others.
+    </p>
+    <a href="#host" class="btn btn-gold-on-light">Host a Game →</a>
+  </header>
 
-<svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0,20 Q75,0 150,20 T300,20 T450,20 T600,20 T750,20 T900,20 V40 H0 Z" fill="#fff"/>
-</svg>
+  <svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,20 Q75,0 150,20 T300,20 T450,20 T600,20 T750,20 T900,20 V40 H0 Z" fill="#fff" />
+  </svg>
 
-<section class="overview">
-  <div class="overview-grid">
-    <div>
-      <div class="icon" aria-hidden="true">🧠</div>
-      <b>Share your story</b>
-    </div>
-    <div>
-      <div class="icon" aria-hidden="true">🛡️</div>
-      <b>Co-create insights</b>
-    </div>
-    <div>
-      <div class="icon" aria-hidden="true">🤝</div>
-      <b>Live the wisdom</b>
-    </div>
-  </div>
-</section>
-
-<section class="section paths">
-  <div class="section-inner">
-    <p class="eyebrow" style="text-align:center; color: var(--blue);">Choose your path</p>
-    <div class="paths-grid" style="margin-top: 1.25rem;">
-      <div class="path-card org">
-        <h3>For Organizations &amp; Groups</h3>
-        <p>One-line pitch on innovation &amp; team performance. <a href="#your-story">See the value →</a></p>
+  <section class="overview">
+    <div class="overview-grid">
+      <div>
+        <div class="icon" aria-hidden="true">🧠</div>
+        <b>Share your story</b>
       </div>
-      <div class="path-card family">
-        <h3>For Friends &amp; Families</h3>
-        <p>One-line pitch on connection &amp; fun. <a href="#your-story">See the value →</a></p>
+      <div>
+        <div class="icon" aria-hidden="true">🛡️</div>
+        <b>Co-create insights</b>
+      </div>
+      <div>
+        <div class="icon" aria-hidden="true">🤝</div>
+        <b>Live the wisdom</b>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section founders">
-  <div class="section-inner">
-    <p class="eyebrow" style="color: var(--blue);">Meet the founders</p>
-    <div class="founder-grid">
-      <div class="founder">
-        <div class="avatar"></div>
-        <b>Founder 1 name</b>
-        <p>One-sentence description + credential</p>
-      </div>
-      <div class="founder">
-        <div class="avatar"></div>
-        <b>Founder 2 name</b>
-        <p>One-sentence description + credential</p>
-      </div>
-    </div>
-    <p class="teaser">"How we met" teaser — 2–3 sentences, linking to the full story below ↓</p>
-  </div>
-</section>
-
-<section class="section chapters" id="story">
-  <div class="section-inner">
-    <span class="eyebrow">Our Story</span>
-    <h2>The Chapters</h2>
-    <div class="chapter-map">
-      <a class="chapter-tile" href="#chapter-1"><b>Ch.1</b>The spark</a>
-      <a class="chapter-tile" href="#chapter-2"><b>Ch.2</b>How we met</a>
-      <div class="chapter-tile quote"><b>❝ Quote</b>Neuroscience credibility quote</div>
-      <a class="chapter-tile" href="#chapter-3"><b>Ch.3</b>The process</a>
-      <a class="chapter-tile" href="#chapter-4"><b>Ch.4</b>What it grew into</a>
-      <a class="chapter-tile" href="#chapter-5"><b>Ch.5</b>The future</a>
-    </div>
-  </div>
-</section>
-
-<section class="section chapter-narrative">
-  <div class="chapter-list">
-    <div class="chapter-entry" id="chapter-1">
-      <span class="eyebrow">Chapter 1 — The Spark</span>
-      <p>~80–100 words. Two short paragraphs. Starts mid-scene, not with setup.</p>
-    </div>
-    <div class="chapter-entry" id="chapter-2">
-      <span class="eyebrow">Chapter 2 — How We Met</span>
-      <p>~80–100 words.</p>
-    </div>
-    <div class="pull-quote">❝ Neuroscience credibility quote sits here, between Ch.2 and Ch.3 ❞</div>
-    <div class="chapter-entry" id="chapter-3">
-      <span class="eyebrow">Chapter 3 — The Process</span>
-      <p>Can run a little longer (~120–150 words) if needed — this one usually accumulates the most detail.</p>
-    </div>
-    <div class="chapter-entry" id="chapter-4">
-      <span class="eyebrow">Chapter 4 — What It Grew Into</span>
-      <p>~80–100 words.</p>
-    </div>
-    <div class="chapter-entry" id="chapter-5">
-      <span class="eyebrow">Chapter 5 — The Future We See</span>
-      <p>Shorter — 2–3 punchy, forward-looking sentences rather than a story beat.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section game-story" id="the-game">
-  <div class="section-inner">
-    <span class="eyebrow">Our Game's Story</span>
-    <div class="game-story-grid">
-      <div class="game-story-text">
-        <p><b>The Name</b> — short story</p>
-        <p><b>The Game</b></p>
-        <div class="spec-tags">
-          <span>Who: 4–8 people</span>
-          <span>How: guided session</span>
-          <span>Length: 30–60 min</span>
-          <span>Where: in-person or online</span>
+  <section class="section paths">
+    <div class="section-inner">
+      <p class="eyebrow" style="text-align:center; color: var(--blue);">Choose your path</p>
+      <div class="paths-grid" style="margin-top: 1.25rem;">
+        <div class="path-card org">
+          <h3>For Organizations &amp; Groups</h3>
+          <p>One-line pitch on innovation &amp; team performance. <a href="#your-story">See the value →</a></p>
         </div>
-        <p><b>How to Play</b></p>
-        <ol class="process-list">
-          <li>Identify the topic</li>
-          <li>Share stories and bloopers</li>
-          <li>Co-create group wisdom</li>
-          <li>Live the change</li>
-        </ol>
-        <div class="optional-block">
-          <span class="eyebrow">Optional add-ons</span>
-          <ul>
-            <li>Take an assessment to identify needs</li>
-            <li>Pick a winner to add intrigue</li>
-          </ul>
+        <div class="path-card family">
+          <h3>For Friends &amp; Families</h3>
+          <p>One-line pitch on connection &amp; fun. <a href="#your-story">See the value →</a></p>
         </div>
-        <p><b>Why Play</b> — short answer</p>
       </div>
-      <div class="game-story-illustration">illustration<br>(sample card)</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section your-story" id="your-story">
-  <div class="section-inner">
-    <h2>Craft Your Own Story</h2>
-    <p class="lede">See how it plays out for you, whichever path brought you here.</p>
-    <div class="story-split">
-      <div class="story-panel org">
-        <div class="story-illustration" role="img" aria-label="Illustration of a team celebrating together"><svg width="100%" height="100%" viewBox="0 0 323 335" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;">
-    <g transform="matrix(1,0,0,1,-919.493,-528.233467)">
-        <g id="Principle-texts" serif:id="Principle texts">
-        </g>
-        <g id="Pando-man" serif:id="Pando man">
-        </g>
-        <g id="Principle-icons" serif:id="Principle icons">
-            <g id="Icon-Grateful" serif:id="Icon Grateful">
-            </g>
-        </g>
-        <g id="The-model" serif:id="The model">
-            <g transform="matrix(0.582853,0,0,0.582853,837.243803,461.124015)">
-                <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,847.566409,450.677168)">
-                <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,837.243803,425.985799)">
-                <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,830.975696,444.220283)">
-                <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0,-6.575991,-6.575991,0,1074.636683,651.050268)">
-                <path d="M-6.5,-6.5C-10.642,-6.5 -14,-3.59 -14,0C-14,3.59 -10.363,6.88 -6.221,6.88C-2.079,6.88 1.35,3.278 1.372,-0.312C1.403,-5.359 -2.358,-6.5 -6.5,-6.5Z" style="fill:white;fill-rule:nonzero;"/>
-            </g>
-            <g transform="matrix(1.515954,0,0,1.038481,-961.308997,7.411482)">
-                <path d="M1313.728,705.096C1312.535,703.794 1320.216,724.371 1343.015,722.783C1355.869,721.887 1367.451,712.964 1369.134,711.411C1371.294,722.232 1387.453,777.354 1392.422,803.72C1370.658,815.399 1356.493,816.3 1342.188,817.127C1331.025,817.772 1303.344,807.733 1300.185,807.695C1296.231,807.648 1311.394,712.567 1313.728,705.096Z" style="fill:white;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,0.945646,-1047.802785,70.95205)">
-                <path d="M1360.542,811.649C1388.651,781.082 1369.1,713.749 1369.1,713.749C1371.26,724.569 1395.66,813.931 1391.878,816.493C1372.383,829.698 1332.141,839.754 1303.05,814.972C1300.467,812.771 1336.866,837.395 1360.542,811.649Z" style="fill:rgb(208,225,228);"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,0.945646,-1046.258099,68.862819)">
-                <path d="M1315.493,709.384C1314.299,708.083 1319.749,726.741 1342.548,725.153C1355.402,724.257 1366.521,713.998 1368.204,712.444C1370.364,723.265 1385.93,791.17 1390.899,817.536C1358.879,840.757 1328.505,836.647 1302.071,820.567C1300.053,819.34 1304.049,776.378 1307.487,754.005C1310.637,733.513 1314.376,712.956 1315.493,709.384Z" style="fill:none;stroke:black;stroke-width:6.41px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,1.578238,-1046.258099,-379.846706)">
-                <path d="M1369.388,712.652C1377.667,700.625 1399.487,677.216 1410.506,666.337C1401.767,682.521 1375.172,721.748 1374.511,723.716" style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,1.578238,-1046.258099,-379.846706)">
-                <path d="M1315.709,710.319C1312.871,706.136 1284.503,669.476 1274.674,661.749C1277.591,672.942 1308.96,719.122 1310.434,721.654" style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,1.578238,-1046.258099,-375.18388)">
-                <path d="M1367.049,655.613C1359.425,635.363 1315.921,638.962 1315.171,681.24C1314.881,697.618 1342.438,724.955 1365.699,695.817C1385.688,670.776 1349.517,651.81 1357.066,657.864" style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
-                <path d="M220.045,338.029C228.027,417.522 230.326,431.189 230.696,442.799" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
-                <path d="M223.373,337.432C217.548,335.247 237.313,351.713 293.584,400.95" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
-                <path d="M228.407,393.32C236.172,376.286 242.883,392.995 248.715,393.662C256.584,394.561 243.997,376.465 265.368,378.109" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,897.098912,399.227569)">
-                <g>
+  <section class="section founders">
+    <div class="section-inner">
+      <p class="eyebrow" style="color: var(--blue);">Meet the founders</p>
+      <div class="founder-grid">
+        <div class="founder">
+          <div class="avatar"></div>
+          <b>Leslie - Executive Coach</b>
+          <p>Leslie Hamilton is a leadership coach and organisational development expert with more than 33 years of
+            experience helping people grow and succeed. By combining deep insights into human behaviour with practical
+            leadership and coaching expertise, she helps people discover their strengths, connect with others and create
+            positive change.</p>
+        </div>
+        <div class="founder">
+          <div class="avatar"></div>
+          <b>Amanda - Team Coach and Visual Facilitator</b>
+          <p>Amanda Schreyer is a visual thinker and agile coach who has spent more than 10 years helping teams work
+            better together.
+            By combining the science behind how the mind engages with visuals and her experience coaching teams through
+            complexity, she helps people create shared understanding, solve problems, and discover new possibilities
+            together.
+          </p>
+        </div>
+      </div>
+      <p class="teaser">"How we met" teaser — 2–3 sentences, linking to the full story below ↓</p>
+    </div>
+  </section>
+
+  <section class="section chapters" id="story">
+    <div class="section-inner">
+      <span class="eyebrow">Our Story</span>
+      <h2>The Chapters</h2>
+      <div class="chapter-map">
+        <a class="chapter-tile" href="#chapter-1"><b>Ch.1</b>The spark</a>
+        <a class="chapter-tile" href="#chapter-2"><b>Ch.2</b>How we met</a>
+        <div class="chapter-tile quote"><b>❝ Quote</b>Neuroscience credibility quote</div>
+        <a class="chapter-tile" href="#chapter-3"><b>Ch.3</b>The process</a>
+        <a class="chapter-tile" href="#chapter-4"><b>Ch.4</b>What it grew into</a>
+        <a class="chapter-tile" href="#chapter-5"><b>Ch.5</b>The future</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section chapter-narrative">
+    <div class="chapter-list">
+      <div class="chapter-entry" id="chapter-1">
+        <span class="eyebrow">Chapter 1 — The Spark</span>
+        <p>~80–100 words. Two short paragraphs. Starts mid-scene, not with setup.</p>
+      </div>
+      <div class="chapter-entry" id="chapter-2">
+        <span class="eyebrow">Chapter 2 — How We Met</span>
+        <p>~80–100 words.</p>
+      </div>
+      <div class="pull-quote">❝ Neuroscience credibility quote sits here, between Ch.2 and Ch.3 ❞</div>
+      <div class="chapter-entry" id="chapter-3">
+        <span class="eyebrow">Chapter 3 — The Process</span>
+        <p>Can run a little longer (~120–150 words) if needed — this one usually accumulates the most detail.</p>
+      </div>
+      <div class="chapter-entry" id="chapter-4">
+        <span class="eyebrow">Chapter 4 — What It Grew Into</span>
+        <p>~80–100 words.</p>
+      </div>
+      <div class="chapter-entry" id="chapter-5">
+        <span class="eyebrow">Chapter 5 — The Future We See</span>
+        <p>Shorter — 2–3 punchy, forward-looking sentences rather than a story beat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section game-story" id="the-game">
+    <div class="section-inner">
+      <span class="eyebrow">Our Game's Story</span>
+      <div class="game-story-grid">
+        <div class="game-story-text">
+          <p><b>The Name</b> — short story</p>
+          <p><b>The Game</b></p>
+          <div class="spec-tags">
+            <span>Who: 4–8 people</span>
+            <span>How: guided session</span>
+            <span>Length: 30–60 min</span>
+            <span>Where: in-person or online</span>
+          </div>
+          <p><b>How to Play</b></p>
+          <ol class="process-list">
+            <li>Identify the topic</li>
+            <li>Share stories and bloopers</li>
+            <li>Co-create group wisdom</li>
+            <li>Live the change</li>
+          </ol>
+          <div class="optional-block">
+            <span class="eyebrow">Optional add-ons</span>
+            <ul>
+              <li>Take an assessment to identify needs</li>
+              <li>Pick a winner to add intrigue</li>
+            </ul>
+          </div>
+          <p><b>Why Play</b> — short answer</p>
+        </div>
+        <div class="game-story-illustration">illustration<br>(sample card)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section your-story" id="your-story">
+    <div class="section-inner">
+      <h2>Craft Your Own Story</h2>
+      <p class="lede">See how it plays out for you, whichever path brought you here.</p>
+      <div class="story-split">
+        <div class="story-panel org">
+          <div class="story-illustration" role="img" aria-label="Illustration of a team celebrating together"><svg
+              width="100%" height="100%" viewBox="0 0 323 335" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+              style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;">
+              <g transform="matrix(1,0,0,1,-919.493,-528.233467)">
+                <g id="Principle-texts" serif:id="Principle texts">
+                </g>
+                <g id="Pando-man" serif:id="Pando man">
+                </g>
+                <g id="Principle-icons" serif:id="Principle icons">
+                  <g id="Icon-Grateful" serif:id="Icon Grateful">
+                  </g>
+                </g>
+                <g id="The-model" serif:id="The model">
+                  <g transform="matrix(0.582853,0,0,0.582853,837.243803,461.124015)">
+                    <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,847.566409,450.677168)">
+                    <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,837.243803,425.985799)">
+                    <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,830.975696,444.220283)">
+                    <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0,-6.575991,-6.575991,0,1074.636683,651.050268)">
+                    <path
+                      d="M-6.5,-6.5C-10.642,-6.5 -14,-3.59 -14,0C-14,3.59 -10.363,6.88 -6.221,6.88C-2.079,6.88 1.35,3.278 1.372,-0.312C1.403,-5.359 -2.358,-6.5 -6.5,-6.5Z"
+                      style="fill:white;fill-rule:nonzero;" />
+                  </g>
+                  <g transform="matrix(1.515954,0,0,1.038481,-961.308997,7.411482)">
+                    <path
+                      d="M1313.728,705.096C1312.535,703.794 1320.216,724.371 1343.015,722.783C1355.869,721.887 1367.451,712.964 1369.134,711.411C1371.294,722.232 1387.453,777.354 1392.422,803.72C1370.658,815.399 1356.493,816.3 1342.188,817.127C1331.025,817.772 1303.344,807.733 1300.185,807.695C1296.231,807.648 1311.394,712.567 1313.728,705.096Z"
+                      style="fill:white;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,0.945646,-1047.802785,70.95205)">
+                    <path
+                      d="M1360.542,811.649C1388.651,781.082 1369.1,713.749 1369.1,713.749C1371.26,724.569 1395.66,813.931 1391.878,816.493C1372.383,829.698 1332.141,839.754 1303.05,814.972C1300.467,812.771 1336.866,837.395 1360.542,811.649Z"
+                      style="fill:rgb(208,225,228);" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,0.945646,-1046.258099,68.862819)">
+                    <path
+                      d="M1315.493,709.384C1314.299,708.083 1319.749,726.741 1342.548,725.153C1355.402,724.257 1366.521,713.998 1368.204,712.444C1370.364,723.265 1385.93,791.17 1390.899,817.536C1358.879,840.757 1328.505,836.647 1302.071,820.567C1300.053,819.34 1304.049,776.378 1307.487,754.005C1310.637,733.513 1314.376,712.956 1315.493,709.384Z"
+                      style="fill:none;stroke:black;stroke-width:6.41px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,1.578238,-1046.258099,-379.846706)">
+                    <path
+                      d="M1369.388,712.652C1377.667,700.625 1399.487,677.216 1410.506,666.337C1401.767,682.521 1375.172,721.748 1374.511,723.716"
+                      style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,1.578238,-1046.258099,-379.846706)">
+                    <path
+                      d="M1315.709,710.319C1312.871,706.136 1284.503,669.476 1274.674,661.749C1277.591,672.942 1308.96,719.122 1310.434,721.654"
+                      style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,1.578238,-1046.258099,-375.18388)">
+                    <path
+                      d="M1367.049,655.613C1359.425,635.363 1315.921,638.962 1315.171,681.24C1314.881,697.618 1342.438,724.955 1365.699,695.817C1385.688,670.776 1349.517,651.81 1357.066,657.864"
+                      style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
+                    <path d="M220.045,338.029C228.027,417.522 230.326,431.189 230.696,442.799"
+                      style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
+                    <path d="M223.373,337.432C217.548,335.247 237.313,351.713 293.584,400.95"
+                      style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
+                    <path
+                      d="M228.407,393.32C236.172,376.286 242.883,392.995 248.715,393.662C256.584,394.561 243.997,376.465 265.368,378.109"
+                      style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,897.098912,399.227569)">
                     <g>
+                      <g>
                         <g transform="matrix(1,0,0,1,-168.537778,-397.108754)">
-                            <path d="M566.129,805.447C558.665,800.044 504.69,772.638 517.749,725.24C533.047,669.713 594.224,673.162 614.765,702.116C646.635,747.042 594.641,795.942 566.129,805.447Z" style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;"/>
+                          <path
+                            d="M566.129,805.447C558.665,800.044 504.69,772.638 517.749,725.24C533.047,669.713 594.224,673.162 614.765,702.116C646.635,747.042 594.641,795.942 566.129,805.447Z"
+                            style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;" />
                         </g>
                         <g transform="matrix(1,0,0,1,-227.21678,-348.858305)">
-                            <path d="M625.625,757.196C625.226,758.623 624.772,760.244 619.001,774.497C628.149,774.722 627.928,774.452 636.842,773.495C631.882,765.399 631.96,765.554 627.014,757.407" style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;"/>
+                          <path
+                            d="M625.625,757.196C625.226,758.623 624.772,760.244 619.001,774.497C628.149,774.722 627.928,774.452 636.842,773.495C631.882,765.399 631.96,765.554 627.014,757.407"
+                            style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;" />
                         </g>
-                    </g>
-                    <g>
+                      </g>
+                      <g>
                         <g transform="matrix(1,0,0,1,-252.723318,-363.827273)">
-                            <path d="M708.112,786.76C622.956,747.255 679.888,658.638 731.747,692.475C792.35,732.017 708.066,786.688 708.112,786.76Z" style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;"/>
+                          <path
+                            d="M708.112,786.76C622.956,747.255 679.888,658.638 731.747,692.475C792.35,732.017 708.066,786.688 708.112,786.76Z"
+                            style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;" />
                         </g>
                         <g transform="matrix(1,0,0,1,-171.694208,-334.263291)">
-                            <path d="M625.625,757.196C625.226,758.623 624.772,760.244 619.001,774.497C628.149,774.722 627.928,774.452 636.842,773.495C631.882,765.399 631.96,765.554 627.014,757.407" style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;"/>
+                          <path
+                            d="M625.625,757.196C625.226,758.623 624.772,760.244 619.001,774.497C628.149,774.722 627.928,774.452 636.842,773.495C631.882,765.399 631.96,765.554 627.014,757.407"
+                            style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;" />
                         </g>
+                      </g>
                     </g>
+                    <path
+                      d="M402.331,426.206C391.678,429.074 403.403,446.31 404.259,447.953C410.301,459.55 396.503,475.418 394.887,477.683"
+                      style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;" />
+                    <path d="M454.516,438.922C465.842,442.344 452.945,460.345 456.774,468.002"
+                      style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
+                    <path d="M263.475,490.753C270.192,479.948 280.137,481.053 281.778,481.235"
+                      style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(0.551114,0.189714,-0.189714,0.551114,1029.209458,360.006082)">
+                    <path d="M263.475,490.753C270.192,479.948 280.137,481.053 281.778,481.235"
+                      style="fill:none;stroke:black;stroke-width:14.3px;" />
+                  </g>
+                  <g transform="matrix(9.895206,0,0,9.587635,-7801.051473,-5036.323448)">
+                    <path
+                      d="M898.17,580.932C876.47,581.514 877.242,613.213 895.305,614.631C918.697,616.467 918.937,581.978 898.17,580.932Z"
+                      style="fill:none;stroke:black;stroke-width:1.07px;stroke-miterlimit:1.5;" />
+                  </g>
                 </g>
-                <path d="M402.331,426.206C391.678,429.074 403.403,446.31 404.259,447.953C410.301,459.55 396.503,475.418 394.887,477.683" style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;"/>
-                <path d="M454.516,438.922C465.842,442.344 452.945,460.345 456.774,468.002" style="fill:rgb(242,13,13);stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.582853,0,0,0.582853,902.963901,406.990406)">
-                <path d="M263.475,490.753C270.192,479.948 280.137,481.053 281.778,481.235" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(0.551114,0.189714,-0.189714,0.551114,1029.209458,360.006082)">
-                <path d="M263.475,490.753C270.192,479.948 280.137,481.053 281.778,481.235" style="fill:none;stroke:black;stroke-width:14.3px;"/>
-            </g>
-            <g transform="matrix(9.895206,0,0,9.587635,-7801.051473,-5036.323448)">
-                <path d="M898.17,580.932C876.47,581.514 877.242,613.213 895.305,614.631C918.697,616.467 918.937,581.978 898.17,580.932Z" style="fill:none;stroke:black;stroke-width:1.07px;stroke-miterlimit:1.5;"/>
-            </g>
-        </g>
-        <g id="Frame" transform="matrix(4.166667,0,0,4.166667,-7.167464,2.105299)">
-            <g transform="matrix(0.243279,0,0,0.23758,1.596379,0.089312)">
-                <path d="M2595.718,145.023L2595.718,1420.742C2595.718,1480.41 2548.41,1528.854 2490.139,1528.854L147.625,1528.854C89.354,1528.854 42.046,1480.41 42.046,1420.742L42.046,145.023C42.046,85.355 89.354,36.911 147.625,36.911L2490.139,36.911C2548.41,36.911 2595.718,85.355 2595.718,145.023Z" style="fill:none;stroke:black;stroke-width:15.8px;stroke-linejoin:miter;stroke-miterlimit:1.5;"/>
-            </g>
-        </g>
-        <g id="Greatness-text" serif:id="Greatness text">
-        </g>
-        <g id="Generous-text" serif:id="Generous text">
-        </g>
-        <g id="Joyous-text" serif:id="Joyous text">
-        </g>
-        <g id="Grounded-text" serif:id="Grounded text">
-        </g>
-        <g id="Gracious-Text" serif:id="Gracious Text">
-        </g>
-        <g id="Grateful-text" serif:id="Grateful text">
-        </g>
-        <g id="text-Pando-6Gs" serif:id="text Pando 6Gs">
-        </g>
-    </g>
-</svg>
-</div>
-        <span class="eyebrow">For Organizations &amp; Groups</span>
-        <h3>Why a CEO would invest in this for their team</h3>
-        <p class="intro-line">Teams don't just play the game — they see themselves differently afterward.</p>
-        <ul>
-          <li>Builds connection and trust across teams that carries into daily work</li>
-          <li>Surfaces innovative thinking by engaging different parts of the brain</li>
-          <li>Strengthens collaboration without a typical "training day" feel</li>
-          <li>Backed by neuroscience research, not just team-building trends</li>
-        </ul>
-      </div>
-      <div class="story-panel family">
-        <div class="story-illustration" role="img" aria-label="Illustration of quiet personal reflection"><svg width="100%" height="100%" viewBox="0 0 323 335" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;">
-    <g transform="matrix(1,0,0,1,-520.629555,-449.445494)">
-        <g transform="matrix(1,0,0,1,-811.662112,-209.672335)">
-            <g>
-                <g transform="matrix(1,0,0,1,226.829445,-245.484909)">
-                    <path d="M1344.533,1094.229C1347.116,1098.05 1351.478,1095.575 1351.478,1095.575C1354.255,1093.657 1351.207,1100.83 1340.796,1122.483C1335.191,1134.143 1342.062,1143.995 1348.733,1136.276C1357.502,1126.13 1356.128,1093.702 1372.775,1099.112C1375.234,1099.911 1378.863,1102.05 1382.397,1098.561C1386.141,1094.867 1383.045,1085.927 1385.881,1086.086C1398.789,1086.812 1398.246,1078.071 1394.614,1073.576C1395.269,1072.6 1403.55,1068.032 1403.492,1061.87C1403.464,1058.818 1398.978,1055.876 1397.262,1054.224C1397.681,1052.476 1403.74,1047.156 1402.098,1041.439C1400.238,1034.963 1390.806,1036.393 1390.806,1036.393C1389.195,1022.919 1383.561,1020.447 1372.775,1032.069C1372.775,1032.069 1364.373,1024.176 1358.36,1027.357C1353.433,1029.963 1355.476,1039.05 1355.476,1039.05C1355.476,1039.05 1339.855,1036.802 1344.059,1047.227C1344.397,1048.067 1348.255,1054.207 1348.255,1054.207C1348.255,1054.207 1337.889,1052.129 1337.5,1059.989C1337.248,1065.086 1346.017,1070.17 1346.017,1070.17C1346.017,1070.17 1338.065,1075.493 1338.705,1079.355C1339.666,1085.146 1347.437,1083.09 1347.437,1083.09C1347.437,1083.09 1339.234,1090.787 1344.533,1094.229Z" style="fill:rgb(242,13,13);"/>
+                <g id="Frame" transform="matrix(4.166667,0,0,4.166667,-7.167464,2.105299)">
+                  <g transform="matrix(0.243279,0,0,0.23758,1.596379,0.089312)">
+                    <path
+                      d="M2595.718,145.023L2595.718,1420.742C2595.718,1480.41 2548.41,1528.854 2490.139,1528.854L147.625,1528.854C89.354,1528.854 42.046,1480.41 42.046,1420.742L42.046,145.023C42.046,85.355 89.354,36.911 147.625,36.911L2490.139,36.911C2548.41,36.911 2595.718,85.355 2595.718,145.023Z"
+                      style="fill:none;stroke:black;stroke-width:15.8px;stroke-linejoin:miter;stroke-miterlimit:1.5;" />
+                  </g>
                 </g>
-                <g transform="matrix(1,0,0,1,226.858248,-245.484909)">
-                    <path d="M1343.705,1094.229C1345.633,1096.67 1351.478,1095.575 1351.478,1095.575C1354.255,1093.657 1351.207,1100.83 1340.796,1122.483C1335.191,1134.143 1342.062,1143.995 1348.733,1136.276C1357.502,1126.13 1356.128,1093.702 1372.775,1099.112C1375.234,1099.911 1378.863,1102.05 1382.397,1098.561C1386.141,1094.867 1383.045,1085.927 1385.881,1086.086C1398.789,1086.812 1398.246,1078.071 1394.614,1073.576C1395.269,1072.6 1403.55,1068.032 1403.492,1061.87C1403.464,1058.818 1398.978,1055.876 1397.262,1054.224C1397.681,1052.476 1403.74,1047.156 1402.098,1041.439C1400.238,1034.963 1390.806,1036.393 1390.806,1036.393C1389.195,1022.919 1383.561,1020.447 1372.775,1032.069C1372.775,1032.069 1364.373,1024.176 1358.36,1027.357C1353.433,1029.963 1355.476,1039.05 1355.476,1039.05C1355.476,1039.05 1339.855,1036.802 1344.059,1047.227C1344.397,1048.067 1348.255,1054.207 1348.255,1054.207C1348.255,1054.207 1337.889,1052.129 1337.5,1059.989C1337.248,1065.086 1346.017,1070.17 1346.017,1070.17C1346.017,1070.17 1338.065,1075.493 1338.705,1079.355C1339.666,1085.146 1347.437,1083.09 1347.437,1083.09C1347.437,1083.09 1341.471,1091.4 1343.705,1094.229Z" style="fill:none;stroke:black;stroke-width:6.25px;"/>
+                <g id="Greatness-text" serif:id="Greatness text">
                 </g>
-                <g transform="matrix(1.335472,0.53118,-0.699923,1.75972,817.249233,-710.96809)">
-                    <path d="M898.17,580.932C876.47,581.514 877.242,613.213 895.305,614.631C918.697,616.467 918.937,581.978 898.17,580.932Z" style="fill:white;stroke:black;stroke-width:3.72px;stroke-miterlimit:1.5;"/>
+                <g id="Generous-text" serif:id="Generous text">
                 </g>
-            </g>
-            <g transform="matrix(0,-6.575991,-6.575991,0,1470.43535,781.93463)">
-                <path d="M-6.5,-6.5C-10.642,-6.5 -14,-3.59 -14,0C-14,3.59 -10.363,6.88 -6.221,6.88C-2.079,6.88 1.35,3.278 1.372,-0.312C1.403,-5.359 -2.358,-6.5 -6.5,-6.5Z" style="fill:white;fill-rule:nonzero;"/>
-            </g>
-            <g transform="matrix(1.515954,0,0,1.038481,-565.510331,138.295844)">
-                <path d="M1313.728,705.096C1312.535,703.794 1320.216,724.371 1343.015,722.783C1355.869,721.887 1367.451,712.964 1369.134,711.411C1371.294,722.232 1387.453,777.354 1392.422,803.72C1370.658,815.399 1356.493,816.3 1342.188,817.127C1331.025,817.772 1302.554,797.945 1299.395,797.907C1295.441,797.859 1311.394,712.567 1313.728,705.096Z" style="fill:white;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,0.945646,-652.004119,201.836412)">
-                <path d="M1360.542,811.649C1388.651,781.082 1369.1,713.749 1369.1,713.749C1371.26,724.569 1395.66,813.931 1391.878,816.493C1372.383,829.698 1332.141,839.754 1303.05,814.972C1300.467,812.771 1336.866,837.395 1360.542,811.649Z" style="fill:rgb(208,225,228);"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,0.945646,-650.459433,199.747181)">
-                <path d="M1315.493,709.384C1314.299,708.083 1319.749,726.741 1342.548,725.153C1355.402,724.257 1366.521,713.998 1368.204,712.444C1370.364,723.265 1387.82,796.922 1392.789,823.288C1356.695,841.235 1330.84,837.854 1302.071,810.827C1300.2,809.068 1307.487,754.005 1307.487,754.005C1307.487,754.005 1314.376,712.956 1315.493,709.384Z" style="fill:none;stroke:black;stroke-width:6.41px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,1.578238,-650.459433,-248.962344)">
-                <path d="M1368.724,711.95C1384.443,710.657 1395.042,710.238 1417.33,709.29C1394.292,716.656 1375.172,721.748 1374.511,723.716" style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,1.578238,-651.311221,-247.446887)">
-                <path d="M1315.709,710.319C1312.871,706.136 1284.503,669.476 1274.674,661.749C1277.591,672.942 1308.96,719.122 1310.434,721.654" style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1.578238,0,0,1.578238,-650.459433,-244.299518)">
-                <path d="M1367.049,655.613C1359.425,635.363 1315.921,638.962 1315.171,681.24C1314.881,697.618 1342.438,724.955 1365.699,695.817C1385.688,670.776 1349.517,651.81 1357.066,657.864" style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(9.895206,0,0,9.587635,-7388.252807,-4905.439086)">
-                <path d="M898.17,580.932C876.47,581.514 877.242,613.213 895.305,614.631C918.697,616.467 918.937,581.978 898.17,580.932Z" style="fill:none;stroke:black;stroke-width:1.07px;stroke-miterlimit:1.5;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,1196.960692,453.488812)">
-                <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:10.42px;"/>
-            </g>
-            <g transform="matrix(1,0,0,1,1170.803662,461.320475)">
-                <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:10.42px;"/>
-            </g>
-        </g>
-    </g>
-</svg>
-</div>
-        <span class="eyebrow">For Friends &amp; Families</span>
-        <h3>Why you'll want to play it together</h3>
-        <p class="intro-line">The stories you share tonight are the ones you'll still be laughing about later.</p>
-        <ul>
-          <li>Creates a genuinely safe space for honest, playful conversation</li>
-          <li>Story-driven format means no awkward icebreaker energy</li>
-          <li>Works equally well online or gathered around a table</li>
-          <li>Leaves people talking about it well after the session ends</li>
-        </ul>
+                <g id="Joyous-text" serif:id="Joyous text">
+                </g>
+                <g id="Grounded-text" serif:id="Grounded text">
+                </g>
+                <g id="Gracious-Text" serif:id="Gracious Text">
+                </g>
+                <g id="Grateful-text" serif:id="Grateful text">
+                </g>
+                <g id="text-Pando-6Gs" serif:id="text Pando 6Gs">
+                </g>
+              </g>
+            </svg>
+          </div>
+          <span class="eyebrow">For Organizations &amp; Groups</span>
+          <h3>Why a CEO would invest in this for their team</h3>
+          <p class="intro-line">Teams don't just play the game — they see themselves differently afterward.</p>
+          <ul>
+            <li>Builds connection and trust across teams that carries into daily work</li>
+            <li>Surfaces innovative thinking by engaging different parts of the brain</li>
+            <li>Strengthens collaboration without a typical "training day" feel</li>
+            <li>Backed by neuroscience research, not just team-building trends</li>
+          </ul>
+        </div>
+        <div class="story-panel family">
+          <div class="story-illustration" role="img" aria-label="Illustration of quiet personal reflection"><svg
+              width="100%" height="100%" viewBox="0 0 323 335" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+              style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;">
+              <g transform="matrix(1,0,0,1,-520.629555,-449.445494)">
+                <g transform="matrix(1,0,0,1,-811.662112,-209.672335)">
+                  <g>
+                    <g transform="matrix(1,0,0,1,226.829445,-245.484909)">
+                      <path
+                        d="M1344.533,1094.229C1347.116,1098.05 1351.478,1095.575 1351.478,1095.575C1354.255,1093.657 1351.207,1100.83 1340.796,1122.483C1335.191,1134.143 1342.062,1143.995 1348.733,1136.276C1357.502,1126.13 1356.128,1093.702 1372.775,1099.112C1375.234,1099.911 1378.863,1102.05 1382.397,1098.561C1386.141,1094.867 1383.045,1085.927 1385.881,1086.086C1398.789,1086.812 1398.246,1078.071 1394.614,1073.576C1395.269,1072.6 1403.55,1068.032 1403.492,1061.87C1403.464,1058.818 1398.978,1055.876 1397.262,1054.224C1397.681,1052.476 1403.74,1047.156 1402.098,1041.439C1400.238,1034.963 1390.806,1036.393 1390.806,1036.393C1389.195,1022.919 1383.561,1020.447 1372.775,1032.069C1372.775,1032.069 1364.373,1024.176 1358.36,1027.357C1353.433,1029.963 1355.476,1039.05 1355.476,1039.05C1355.476,1039.05 1339.855,1036.802 1344.059,1047.227C1344.397,1048.067 1348.255,1054.207 1348.255,1054.207C1348.255,1054.207 1337.889,1052.129 1337.5,1059.989C1337.248,1065.086 1346.017,1070.17 1346.017,1070.17C1346.017,1070.17 1338.065,1075.493 1338.705,1079.355C1339.666,1085.146 1347.437,1083.09 1347.437,1083.09C1347.437,1083.09 1339.234,1090.787 1344.533,1094.229Z"
+                        style="fill:rgb(242,13,13);" />
+                    </g>
+                    <g transform="matrix(1,0,0,1,226.858248,-245.484909)">
+                      <path
+                        d="M1343.705,1094.229C1345.633,1096.67 1351.478,1095.575 1351.478,1095.575C1354.255,1093.657 1351.207,1100.83 1340.796,1122.483C1335.191,1134.143 1342.062,1143.995 1348.733,1136.276C1357.502,1126.13 1356.128,1093.702 1372.775,1099.112C1375.234,1099.911 1378.863,1102.05 1382.397,1098.561C1386.141,1094.867 1383.045,1085.927 1385.881,1086.086C1398.789,1086.812 1398.246,1078.071 1394.614,1073.576C1395.269,1072.6 1403.55,1068.032 1403.492,1061.87C1403.464,1058.818 1398.978,1055.876 1397.262,1054.224C1397.681,1052.476 1403.74,1047.156 1402.098,1041.439C1400.238,1034.963 1390.806,1036.393 1390.806,1036.393C1389.195,1022.919 1383.561,1020.447 1372.775,1032.069C1372.775,1032.069 1364.373,1024.176 1358.36,1027.357C1353.433,1029.963 1355.476,1039.05 1355.476,1039.05C1355.476,1039.05 1339.855,1036.802 1344.059,1047.227C1344.397,1048.067 1348.255,1054.207 1348.255,1054.207C1348.255,1054.207 1337.889,1052.129 1337.5,1059.989C1337.248,1065.086 1346.017,1070.17 1346.017,1070.17C1346.017,1070.17 1338.065,1075.493 1338.705,1079.355C1339.666,1085.146 1347.437,1083.09 1347.437,1083.09C1347.437,1083.09 1341.471,1091.4 1343.705,1094.229Z"
+                        style="fill:none;stroke:black;stroke-width:6.25px;" />
+                    </g>
+                    <g transform="matrix(1.335472,0.53118,-0.699923,1.75972,817.249233,-710.96809)">
+                      <path
+                        d="M898.17,580.932C876.47,581.514 877.242,613.213 895.305,614.631C918.697,616.467 918.937,581.978 898.17,580.932Z"
+                        style="fill:white;stroke:black;stroke-width:3.72px;stroke-miterlimit:1.5;" />
+                    </g>
+                  </g>
+                  <g transform="matrix(0,-6.575991,-6.575991,0,1470.43535,781.93463)">
+                    <path
+                      d="M-6.5,-6.5C-10.642,-6.5 -14,-3.59 -14,0C-14,3.59 -10.363,6.88 -6.221,6.88C-2.079,6.88 1.35,3.278 1.372,-0.312C1.403,-5.359 -2.358,-6.5 -6.5,-6.5Z"
+                      style="fill:white;fill-rule:nonzero;" />
+                  </g>
+                  <g transform="matrix(1.515954,0,0,1.038481,-565.510331,138.295844)">
+                    <path
+                      d="M1313.728,705.096C1312.535,703.794 1320.216,724.371 1343.015,722.783C1355.869,721.887 1367.451,712.964 1369.134,711.411C1371.294,722.232 1387.453,777.354 1392.422,803.72C1370.658,815.399 1356.493,816.3 1342.188,817.127C1331.025,817.772 1302.554,797.945 1299.395,797.907C1295.441,797.859 1311.394,712.567 1313.728,705.096Z"
+                      style="fill:white;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,0.945646,-652.004119,201.836412)">
+                    <path
+                      d="M1360.542,811.649C1388.651,781.082 1369.1,713.749 1369.1,713.749C1371.26,724.569 1395.66,813.931 1391.878,816.493C1372.383,829.698 1332.141,839.754 1303.05,814.972C1300.467,812.771 1336.866,837.395 1360.542,811.649Z"
+                      style="fill:rgb(208,225,228);" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,0.945646,-650.459433,199.747181)">
+                    <path
+                      d="M1315.493,709.384C1314.299,708.083 1319.749,726.741 1342.548,725.153C1355.402,724.257 1366.521,713.998 1368.204,712.444C1370.364,723.265 1387.82,796.922 1392.789,823.288C1356.695,841.235 1330.84,837.854 1302.071,810.827C1300.2,809.068 1307.487,754.005 1307.487,754.005C1307.487,754.005 1314.376,712.956 1315.493,709.384Z"
+                      style="fill:none;stroke:black;stroke-width:6.41px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,1.578238,-650.459433,-248.962344)">
+                    <path
+                      d="M1368.724,711.95C1384.443,710.657 1395.042,710.238 1417.33,709.29C1394.292,716.656 1375.172,721.748 1374.511,723.716"
+                      style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,1.578238,-651.311221,-247.446887)">
+                    <path
+                      d="M1315.709,710.319C1312.871,706.136 1284.503,669.476 1274.674,661.749C1277.591,672.942 1308.96,719.122 1310.434,721.654"
+                      style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1.578238,0,0,1.578238,-650.459433,-244.299518)">
+                    <path
+                      d="M1367.049,655.613C1359.425,635.363 1315.921,638.962 1315.171,681.24C1314.881,697.618 1342.438,724.955 1365.699,695.817C1385.688,670.776 1349.517,651.81 1357.066,657.864"
+                      style="fill:none;stroke:black;stroke-width:5.28px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(9.895206,0,0,9.587635,-7388.252807,-4905.439086)">
+                    <path
+                      d="M898.17,580.932C876.47,581.514 877.242,613.213 895.305,614.631C918.697,616.467 918.937,581.978 898.17,580.932Z"
+                      style="fill:none;stroke:black;stroke-width:1.07px;stroke-miterlimit:1.5;" />
+                  </g>
+                  <g transform="matrix(1,0,0,1,1196.960692,453.488812)">
+                    <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:10.42px;" />
+                  </g>
+                  <g transform="matrix(1,0,0,1,1170.803662,461.320475)">
+                    <path d="M289.258,362.134L289.258,361.807" style="fill:none;stroke:black;stroke-width:10.42px;" />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <span class="eyebrow">For Friends &amp; Families</span>
+          <h3>Why you'll want to play it together</h3>
+          <p class="intro-line">The stories you share tonight are the ones you'll still be laughing about later.</p>
+          <ul>
+            <li>Creates a genuinely safe space for honest, playful conversation</li>
+            <li>Story-driven format means no awkward icebreaker energy</li>
+            <li>Works equally well online or gathered around a table</li>
+            <li>Leaves people talking about it well after the session ends</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section value" id="value">
-  <div class="section-inner">
-    <span class="eyebrow">Value</span>
-    <div class="quote-strip">
-      <blockquote>❝ credibility quote ❞</blockquote>
-      <blockquote>❝ credibility quote ❞</blockquote>
-      <blockquote>❝ credibility quote ❞</blockquote>
-    </div>
-  </div>
-</section>
-
-<section class="section gallery">
-  <div class="section-inner">
-    <span class="eyebrow">Sample Illustrations</span>
-    <div class="gallery-strip">
-      <div class="frame"></div>
-      <div class="frame"></div>
-      <div class="frame"></div>
-      <div class="frame"></div>
-      <div class="frame"></div>
-    </div>
-  </div>
-</section>
-
-<svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none" aria-hidden="true" style="margin-bottom:-34px; position:relative; z-index:2;">
-  <path d="M0,0 H900 V20 Q825,40 750,20 T600,20 T450,20 T300,20 T150,20 T0,20 Z" fill="var(--blue-25)"/>
-</svg>
-
-<section class="final-cta" id="host">
-  <h2>Host a game with us</h2>
-  <p class="cta-copy">Free while we're testing — in exchange, we'd love your honest feedback. In-person sessions available in Auckland, NZ &amp; Sydney, AU. Online sessions work anywhere.</p>
-  <p class="availability">Limited spots this quarter — availability signal here</p>
-  <a href="#contact" class="btn btn-gold-on-dark">Schedule a Session →</a>
-  <p class="soft-link">Have a question first? <a href="#contact">Get in touch</a></p>
-  <p class="privacy-note">Privacy note: how your info is used, one line, near the form.</p>
-</section>
-
-<section class="section faq">
-  <div class="section-inner">
-    <span class="eyebrow">A few questions</span>
-    <div class="faq-list">
-      <div class="faq-item">
-        <b>What happens with our feedback?</b>
-        <p>Short answer here.</p>
-      </div>
-      <div class="faq-item">
-        <b>How long is a session?</b>
-        <p>Short answer here.</p>
-      </div>
-      <div class="faq-item">
-        <b>Can we reschedule?</b>
-        <p>Short answer here.</p>
+  <section class="section value" id="value">
+    <div class="section-inner">
+      <span class="eyebrow">Value</span>
+      <div class="quote-strip">
+        <blockquote>❝ credibility quote ❞</blockquote>
+        <blockquote>❝ credibility quote ❞</blockquote>
+        <blockquote>❝ credibility quote ❞</blockquote>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="site-footer" id="contact">
-  <span>© The Game</span>
-  <span>hello@thegame.example — <a href="mailto:hello@thegame.example">Contact us</a></span>
-  <span class="social"><a href="#">LinkedIn</a><a href="#">Instagram</a></span>
-</footer>
+  <section class="section gallery">
+    <div class="section-inner">
+      <span class="eyebrow">Sample Illustrations</span>
+      <div class="gallery-strip">
+        <div class="frame"></div>
+        <div class="frame"></div>
+        <div class="frame"></div>
+        <div class="frame"></div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 900 40" preserveAspectRatio="none" aria-hidden="true"
+    style="margin-bottom:-34px; position:relative; z-index:2;">
+    <path d="M0,0 H900 V20 Q825,40 750,20 T600,20 T450,20 T300,20 T150,20 T0,20 Z" fill="var(--blue-25)" />
+  </svg>
+
+  <section class="final-cta" id="host">
+    <h2>Host a game with us</h2>
+    <p class="cta-copy">Free while we're testing — in exchange, we'd love your honest feedback. In-person sessions
+      available in Auckland, NZ &amp; Sydney, AU. Online sessions work anywhere.</p>
+    <p class="availability">Limited spots this quarter — availability signal here</p>
+    <a href="#contact" class="btn btn-gold-on-dark">Schedule a Session →</a>
+    <p class="soft-link">Have a question first? <a href="#contact">Get in touch</a></p>
+    <p class="privacy-note">Privacy note: how your info is used, one line, near the form.</p>
+  </section>
+
+  <section class="section faq">
+    <div class="section-inner">
+      <span class="eyebrow">A few questions</span>
+      <div class="faq-list">
+        <div class="faq-item">
+          <b>What happens with our feedback?</b>
+          <p>Short answer here.</p>
+        </div>
+        <div class="faq-item">
+          <b>How long is a session?</b>
+          <p>Short answer here.</p>
+        </div>
+        <div class="faq-item">
+          <b>Can we reschedule?</b>
+          <p>Short answer here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="contact">
+    <span>© The Game</span>
+    <span>hello@thegame.example — <a href="mailto:hello@thegame.example">Contact us</a></span>
+    <span class="social"><a href="#">LinkedIn</a><a href="#">Instagram</a></span>
+  </footer>
 
 </body>
+
 </html>
