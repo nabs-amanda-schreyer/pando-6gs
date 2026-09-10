@@ -301,15 +301,24 @@
     }
 
     .founder-grid {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 2rem;
-      flex-wrap: wrap;
       margin-top: 1.5rem;
     }
 
     .founder {
-      width: 200px;
+      width: auto;
+      background: var(--purple-25);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      color: var(--blue);
+    }
+
+    @media (max-width: 700px) {
+      .founder-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .founder .avatar {
@@ -331,7 +340,7 @@
 
     .founder p {
       font-size: 0.8rem;
-      color: #777;
+      color: var(--blue);
       margin: 0.25rem 0 0;
     }
 
