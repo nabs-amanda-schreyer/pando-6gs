@@ -428,7 +428,7 @@
 
     .founders .teaser {
       font-size: 0.85rem;
-      color: #999;
+      color: var(--blue);
       margin-top: 1rem;
     }
 
