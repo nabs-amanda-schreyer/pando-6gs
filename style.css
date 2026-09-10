@@ -91,7 +91,7 @@
     }
 
     .section-inner > .eyebrow {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
 
     .section {
@@ -264,16 +264,22 @@
       max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2fr);
       gap: 1.5rem;
+      align-items: center;
       text-align: center;
     }
 
-    .overview-copy {
-      max-width: 760px;
+    .section-lead {
+      max-width: 320px;
       margin: 0 auto;
       color: var(--blue);
+      font-family: var(--font-display);
       font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     .overview-gallery {
@@ -281,7 +287,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
       width: 100%;
-      margin-top: 2rem;
+      margin-top: 0;
     }
 
     .overview-gallery img {
@@ -291,8 +297,13 @@
     }
 
     @media (max-width: 700px) {
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+
       .overview-gallery {
         grid-template-columns: 1fr;
+        margin-top: 2rem;
       }
 
       .overview-gallery img {
@@ -412,7 +423,7 @@
     }
 
     .founders .eyebrow {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
 
     .founder-grid {
@@ -716,6 +727,7 @@
       text-align: center;
       width: 100%;
       margin-top: 2.5rem;
+      font-size: 1.5rem;
     }
 
     .game-card-gallery {
