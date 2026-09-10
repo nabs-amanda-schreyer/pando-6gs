@@ -240,6 +240,13 @@
       text-align: center;
     }
 
+    .overview-copy {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--blue);
+      font-size: 1rem;
+    }
+
     .overview-grid .icon {
       font-size: 1.75rem;
     }
