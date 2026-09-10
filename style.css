@@ -711,12 +711,27 @@
       height: 72px;
     }
 
+    .story-panel.org .story-illustration > svg {
+      display: none;
+    }
+
+    .story-panel.org .story-illustration img {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+    }
+
     .story-panel.org .story-illustration {
       background: var(--teal-25);
     }
 
     .story-panel.family .story-illustration {
       background: var(--red-25);
+    }
+
+    .story-panel.family .story-illustration svg {
+      width: 88px;
+      height: 88px;
     }
 
     .story-panel .eyebrow {
