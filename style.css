@@ -179,18 +179,30 @@
 
     /* ---------- HERO ---------- */
     .hero {
-      text-align: center;
       padding: 3.5rem 1.5rem 4rem;
       background: linear-gradient(180deg, var(--blue-25) 0%, var(--paper) 100%);
     }
 
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 430px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
     .hero-illustration {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 1.5rem;
+      width: 390px;
+      height: 390px;
+      margin: 0 auto;
       border-radius: 50%;
       /* makes it perfectly round */
-      background: var(--gold-25);
+      background: transparent;
       /* keeps the colour */
       display: flex;
       align-items: center;
@@ -217,6 +229,18 @@
       color: #555;
       max-width: 480px;
       margin: 0 auto 1.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .hero-illustration {
+        width: min(390px, 100%);
+        height: auto;
+      }
     }
 
     .wave {
