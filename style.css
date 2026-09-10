@@ -293,6 +293,32 @@
       background: var(--blue-25);
     }
 
+    .paths h2,
+    .paths > .section-inner > .lede {
+      text-align: center;
+    }
+
+    .paths h2 {
+      color: var(--purple);
+      font-family: var(--font-display);
+      margin: 0 0 0.6rem;
+    }
+
+    .paths > .section-inner > .lede {
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      color: #5a4c5d;
+      font-size: 0.95rem;
+    }
+
+    .paths .story-split {
+      margin-top: 0;
+    }
+
+    .legacy-your-story {
+      display: none;
+    }
+
     .paths-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
