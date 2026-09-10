@@ -225,6 +225,11 @@
       line-height: 1.15;
     }
 
+    .hero h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+    }
+
     .hero p.lede {
       font-size: 1.2rem;
       color: #555;
@@ -336,6 +341,11 @@
     .paths h2,
     .paths > .section-inner > .lede {
       text-align: center;
+    }
+
+    .paths > .section-inner > .eyebrow {
+      text-align: center;
+      margin: 0 0 0.6rem;
     }
 
     .paths h2 {
