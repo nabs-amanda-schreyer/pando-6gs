@@ -309,13 +309,26 @@
       border-top: 4px solid var(--teal);
     }
 
+    .path-card.org h3 {
+      color: var(--teal);
+    }
+
     .path-card.family {
       border-top: 4px solid var(--red);
     }
 
+    .path-card.family h3 {
+      color: var(--red);
+    }
+
     .path-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       margin: 0 0 0.5rem;
-      font-size: 1.05rem;
+      font-size: 1rem;
+      text-align: center;
     }
 
     .path-card p {
