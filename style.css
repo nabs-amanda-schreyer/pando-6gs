@@ -474,6 +474,10 @@
       margin-bottom: 1.25rem;
     }
 
+    #game-heading {
+      text-align: center;
+    }
+
     .game-story-grid {
       display: flex;
       gap: 1.5rem;
@@ -523,6 +527,21 @@
       text-align: center;
     }
 
+    .spec-tags .length-detail {
+      font-weight: 400;
+    }
+
+    .game-card-counts {
+      text-align: center;
+      width: calc(100% + 10.875rem);
+    }
+
+    @media (max-width: 700px) {
+      .game-card-counts {
+        width: auto;
+      }
+    }
+
     @media (max-width: 700px) {
       .spec-tags {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -548,6 +567,13 @@
       border-radius: 10px;
       padding: 0.75rem 1rem;
       margin: 0 0 0.75rem;
+      width: calc(100% + 10.875rem);
+    }
+
+    @media (max-width: 700px) {
+      .optional-block {
+        width: auto;
+      }
     }
 
     .optional-block .eyebrow {
