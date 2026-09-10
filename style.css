@@ -374,6 +374,10 @@
       text-align: center;
     }
 
+    .legacy-founders {
+      display: none;
+    }
+
     .founders .eyebrow {
       font-size: 1rem;
     }
