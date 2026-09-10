@@ -361,6 +361,13 @@
       color: #fff;
     }
 
+    #story-heading,
+    #game-heading,
+    #your-story-heading,
+    #value-heading {
+      scroll-margin-top: 4.5rem;
+    }
+
     .chapter-map {
       display: flex;
       gap: 0.6rem;
