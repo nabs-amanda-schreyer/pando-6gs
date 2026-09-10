@@ -506,7 +506,7 @@
       background: var(--teal-25);
       border-radius: var(--radius);
       padding: 1rem 1.25rem;
-      width: calc(100% + 10.875rem);
+      width: 100%;
       text-align: center;
     }
 
@@ -521,7 +521,7 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0.5rem;
       margin: 0.75rem 0;
-      width: calc(100% + 10.875rem);
+      width: 100%;
     }
 
     .spec-tags span {
@@ -540,14 +540,14 @@
 
     .game-card-counts {
       text-align: center;
-      width: calc(100% + 10.875rem);
+      width: 100%;
     }
 
     .game-card-gallery {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.5rem;
-      width: calc(100% + 10.875rem);
+      width: 100%;
       margin: 0.75rem 0;
     }
 
@@ -592,7 +592,7 @@
       border-radius: 10px;
       padding: 0.75rem 1rem;
       margin: 0 0 0.75rem;
-      width: calc(100% + 10.875rem);
+      width: 100%;
     }
 
     @media (max-width: 700px) {
@@ -615,20 +615,6 @@
       font-size: 0.85rem;
       color: #6B4402;
       line-height: 1.7;
-    }
-
-    .game-story-illustration {
-      width: 150px;
-      height: 100px;
-      border-radius: 10px;
-      background: var(--gold-25);
-      border: 2px dashed var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      text-align: center;
-      color: #6B4402;
     }
 
     /* ---------- YOUR STORY (split screen) ---------- */
