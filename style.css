@@ -491,6 +491,24 @@
       margin: 0 0 0.5rem;
     }
 
+    .game-story-text .game-title {
+      margin-top: 1.5rem;
+    }
+
+    .game-name-block {
+      background: var(--teal-25);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      width: calc(100% + 10.875rem);
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .game-name-block {
+        width: auto;
+      }
+    }
+
     .spec-tags {
       display: flex;
       flex-wrap: wrap;
