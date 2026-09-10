@@ -733,11 +733,19 @@
       font-weight: 400;
     }
 
-    .game-story-text .game-card-counts {
+    .game-card-counts {
       text-align: center;
       width: 100%;
       margin-top: 2.5rem;
       font-size: 1.25rem;
+    }
+
+    .card-showcase {
+      background: #fff;
+    }
+
+    .card-showcase .game-card-counts {
+      margin-top: 0;
     }
 
     .game-card-gallery {
@@ -755,7 +763,7 @@
     }
 
     @media (max-width: 700px) {
-      .game-story-text .game-card-counts {
+      .game-card-counts {
         width: auto;
       }
 
