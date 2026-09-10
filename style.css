@@ -850,8 +850,18 @@
     .quote-strip blockquote {
       margin: 0;
       max-width: 260px;
-      font-size: 0.85rem;
-      color: #444;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border-left: none;
+      padding-left: 0;
+      text-align: center;
+    }
+
+    .quote-strip blockquote + blockquote {
       border-left: 3px solid var(--gold);
       padding-left: 0.9rem;
     }
