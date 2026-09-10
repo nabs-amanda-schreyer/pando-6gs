@@ -543,6 +543,7 @@
     /* ---------- GAME'S STORY ---------- */
     .game-story {
       background: #fff;
+      padding-bottom: 2rem;
     }
 
     .game-story .eyebrow {
@@ -612,6 +613,7 @@
     .game-card-counts {
       text-align: center;
       width: 100%;
+      margin-top: 1.5rem;
     }
 
     .game-card-gallery {
