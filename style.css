@@ -725,6 +725,45 @@
       font-weight: 600;
     }
 
+    .game-host-image {
+      display: block;
+      width: 100%;
+      max-height: 260px;
+      margin: 0;
+      object-fit: contain;
+    }
+
+    .game-how-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+      margin: 1rem 0;
+    }
+
+    .game-how-card {
+      background: var(--blue-25);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      color: var(--blue);
+    }
+
+    .game-how-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .game-how-card p {
+      font-size: 0.85rem;
+      margin: 0 0 0.75rem;
+    }
+
+    .game-how-card .game-how-note {
+      font-size: 0.75rem;
+      margin-bottom: 0;
+    }
+
     .game-card-counts {
       text-align: center;
       width: 100%;
@@ -755,6 +794,10 @@
     }
 
     @media (max-width: 700px) {
+      .game-how-row {
+        grid-template-columns: 1fr;
+      }
+
       .game-card-counts {
         width: auto;
       }
