@@ -1033,6 +1033,27 @@
       opacity: 0.85;
     }
 
+    .faq-cta {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .faq-cta .soft-link {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin: 0.9rem 0 0;
+    }
+
+    .faq-cta .soft-link a {
+      text-decoration: underline;
+    }
+
+    .faq-cta .privacy-note {
+      font-size: 0.7rem;
+      opacity: 0.5;
+      margin: 0.4rem 0 0;
+    }
+
     /* ---------- FINAL CTA ---------- */
     .final-cta {
       background: var(--blue);
