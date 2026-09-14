@@ -626,7 +626,7 @@
 
     .game-fun-row {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
+      grid-template-columns: 1fr;
       gap: 1.5rem;
       align-items: center;
       margin: 1rem 0;
@@ -646,6 +646,7 @@
       border-radius: var(--radius);
       color: #fff;
       padding: 1.25rem;
+      width: 100%;
     }
 
     .game-host-card h3 {
