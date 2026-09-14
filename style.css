@@ -670,30 +670,9 @@
       padding: 0.55rem 1rem;
     }
 
-    .game-process-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .game-process-row .optional-block {
-      width: auto;
-      margin: 0 0 0.75rem;
-    }
-
     @media (max-width: 700px) {
       .game-fun-row {
         grid-template-columns: 1fr;
-      }
-
-      .game-process-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .game-process-row .optional-block {
-        margin-top: 1.5rem;
       }
     }
 
@@ -790,49 +769,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         width: auto;
       }
-    }
-
-    .process-list {
-      margin: 0.5rem 0 1rem;
-      padding-left: 1.2rem;
-      font-size: 0.85rem;
-      color: #444;
-      line-height: 1.85;
-    }
-
-    .process-list li::marker {
-      color: var(--teal);
-      font-weight: 700;
-    }
-
-    .optional-block {
-      background: var(--gold-25);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      margin: 0 0 0.75rem;
-      width: calc(50% - 0.625rem);
-    }
-
-    @media (max-width: 700px) {
-      .optional-block {
-        width: auto;
-      }
-    }
-
-    .optional-block .eyebrow {
-      display: block;
-      text-align: left;
-      font-size: 0.7rem;
-      color: #6B4402;
-      margin-bottom: 0.35rem;
-    }
-
-    .optional-block ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.85rem;
-      color: #6B4402;
-      line-height: 1.7;
     }
 
     /* ---------- YOUR STORY (split screen) ---------- */
