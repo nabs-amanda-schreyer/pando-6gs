@@ -506,6 +506,10 @@
       color: #fff;
     }
 
+    #story-heading span + span {
+      margin-left: 1em;
+    }
+
     #story-heading,
     #game-heading,
     #your-story-heading,
