@@ -507,7 +507,7 @@
     }
 
     #story-heading span + span {
-      margin-left: 1em;
+      display: inline-block;
     }
 
     #story-heading,
