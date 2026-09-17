@@ -591,10 +591,11 @@
     const shareStatus = document.querySelector('#share-status');
 
     shareButton.addEventListener('click', async () => {
+      const shareUrl = window.location.href.split('?')[0];
       const shareData = {
         title: document.title,
-        text: 'Discover Pando 6Gs, a light-hearted storytelling game for meaningful conversations.',
-        url: window.location.href.split('?')[0]
+        text: `Discover Pando 6Gs, a light-hearted storytelling game for meaningful conversations.\n\n${shareUrl}`,
+        url: shareUrl
       };
 
       if (navigator.share) {
