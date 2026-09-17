@@ -145,6 +145,13 @@
       text-decoration: underline;
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
     @media (max-width: 640px) {
       .site-nav ul {
         display: none;
@@ -166,6 +173,10 @@
       border: none;
     }
 
+    button.btn {
+      appearance: none;
+    }
+
     .btn-gold-on-light {
       background: var(--gold);
       color: #FFF7EC;
@@ -175,6 +186,17 @@
       background: var(--gold-50);
       color: #2B1600;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-share {
+      background: transparent;
+      color: #fff;
+      border: 1px solid var(--blue-50);
+      padding-inline: 1rem;
+    }
+
+    .btn-share:hover {
+      background: rgba(255, 255, 255, 0.12);
     }
 
     /* ---------- HERO ---------- */
