@@ -492,7 +492,7 @@
 
     .founder b {
       display: block;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .founder p {
@@ -601,6 +601,10 @@
       margin: 0;
       font-size: 0.9rem;
       color: #444;
+    }
+
+    .chapter-entry p strong {
+      font-size: 1rem;
     }
 
     .chapter-entry p + p {
