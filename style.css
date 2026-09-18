@@ -91,7 +91,7 @@
     }
 
     .section-inner > .eyebrow {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     .section {
@@ -302,10 +302,8 @@
       margin: 0 auto;
       color: var(--blue);
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       text-align: center;
     }
 
