@@ -1074,7 +1074,10 @@
     }
 
     .faq-actions .btn {
+      display: flex;
       flex: 1 1 12rem;
+      align-items: center;
+      justify-content: center;
       text-align: center;
     }
 
