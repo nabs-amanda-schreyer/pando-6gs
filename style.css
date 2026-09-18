@@ -366,6 +366,7 @@
     .paths > .section-inner > .eyebrow {
       text-align: center;
       margin: 0 0 0.6rem;
+      font-size: 1.5rem;
     }
 
     .paths h2 {
@@ -626,6 +627,7 @@
       display: block;
       color: var(--blue);
       margin-bottom: 1.25rem;
+      font-size: 1.5rem;
     }
 
     #game-heading {
